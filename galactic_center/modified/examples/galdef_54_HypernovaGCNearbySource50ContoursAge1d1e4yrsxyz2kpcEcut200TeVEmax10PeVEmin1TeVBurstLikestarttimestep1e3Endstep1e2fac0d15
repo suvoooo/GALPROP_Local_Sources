@@ -1,0 +1,364 @@
+Title                = conventional/2D 4 kpc tuned to agree with ACE     
+n_spatial_dimensions = 3     
+r_min                = 00.0     min r
+r_max                = 20.00     max r
+dr                   = 1.0     delta r
+z_min                = -2.0     min z
+z_max                = +2.0     max z
+dz                   = 0.05     delta z
+x_min                = -2.0     min x
+x_max                = +2.0     max x
+dx                   = 0.05     delta x
+y_min                = -2.0     min y
+y_max                = +2.0     max y
+dy                   = 0.05     delta y
+p_Ekin_grid          = Ekin     p||Ekin alignment
+p_min                = 1000     min momentum (MV)
+p_max                = 4000     max momentum (MV)
+p_factor             = 1.3     momentum factor
+Ekin_min             = 1.0e6     min kinetic energy per nucleon (MeV)
+Ekin_max             = 1.0e10     max kinetic energy per nucleon (MeV)
+Ekin_factor          = 1.3     kinetic energy per nucleon factor
+gamma_rays           = 0     1=compute gamma rays 2=compute HI, H2 skymaps separately.
+pi0_decay            = 1     1= old formalism 2=Blattnig et al. 3=Kamae et al.
+IC_isotropic         = 1     1=compute isotropic IC: 1=compute full; 2=store skymaps components
+IC_anisotropic       = 0     1=compute anisotropic IC
+bremss               = 1     1=compute bremsstrahlung
+integration_mode     = 0     integr.over part.spec.: =1-old E*logE; =0-PL analyt.
+E_gamma_min          = 1.0e1     min gamma-ray energy (MeV)
+E_gamma_max          = 1.0e6     max gamma-ray energy (MeV)
+E_gamma_factor       = 1.4     gamma-ray energy factor
+ISRF_factors         = 1.0,1.0,1.0     ISRF factors for IC calculation: optical, FIR, CMB
+synchrotron          = 0     1=compute synchrotron
+nu_synch_min         = 1.0e6     min synchrotron frequency (Hz)
+nu_synch_max         = 1.0e10     max synchrotron frequency (Hz)
+nu_synch_factor      = 2.0     synchrotron frequency factor
+long_min             = 0.50     gamma-ray intensity skymap longitude minimum (deg)
+long_max             = 359.50     gamma-ray intensity skymap longitude maximum (deg)
+lat_min              = -89.50     gamma-ray intensity skymap latitude minimum (deg)
+lat_max              = +89.50     gamma-ray intensity skymap latitude maximum (deg)
+d_long               = 1.0     gamma-ray intensity skymap longitude binsize (deg)
+d_lat                = 1.0     gamma-ray intensity skymap latitude binsize (deg)
+healpix_order        = 6     order for healpix skymaps. 6 gives ~1.0 degree resolution and it changes by an order of 2.
+lat_substep_number   = 1     latitude bin splitting (0,1=no split, 2=split in 2...)
+LoS_step             = 0.01     kpc, Line of Sight (LoS) integration step
+LoS_substep_number   = 1     number of substeps per LoS integration step (0,1=no substeps)
+DM_positrons         = 0     1=compute DM positrons
+DM_electrons         = 0     1=compute DM electrons
+DM_antiprotons       = 0     1=compute DM antiprotons
+DM_gammas            = 0     1=compute DM gammas
+DM_double0           = 0     not used
+DM_double1           = 0     not used
+DM_double2           = 0     not used
+DM_double3           = 0     not used
+DM_double4           = 0     not used
+DM_double5           = 0     not used
+DM_double6           = 0     not used
+DM_double7           = 0     not used
+DM_double8           = 0     not used
+DM_double9           = 0     not used
+DM_int0              = 1     not used
+DM_int1              = 1     not used
+DM_int2              = 1     not used
+DM_int3              = 1     not used
+DM_int4              = 1     not used
+DM_int5              = 1     not used
+DM_int6              = 1     not used
+DM_int7              = 1     not used
+DM_int8              = 1     not used
+DM_int9              = 1     not used
+D0_xx                = 3e28     diffusion coefficient at reference rigidity
+D_rigid_br           = 4.0e3     reference rigidity for diffusion coefficient, MV
+D_g_1                = 0.40     diffusion coefficient index below reference rigidity
+D_g_2                = 0.40     diffusion coefficient index above reference rigidity
+diff_reacc           = 0     1=include diffusive reacceleration
+v_Alfven             = 12.     Alfven speed in km s^{-1}
+damping_p0           = 1.e6     some rigidity, MV, (where CR density is low)
+damping_const_G      = 0.02     a const derived from fitting B/C
+damping_max_path_L   = 3.e21     Lmax~1 kpc, max free path
+convection           = 0     1=include convection
+v0_conv              = 0.     V0 convection in km s^-1
+dvdz_conv            = 10.     dV/dz=grad V in km s^-1 kpc^-1
+nuc_rigid_br         = 7.0e3     reference rigidity for primary nucleus injection index in MV
+nuc_g_1              = 2.50     nucleus injection index below reference rigidity
+nuc_g_2              = 2.50     nucleus injection index above reference rigidity
+inj_spectrum_type    = rigidity     rigidity||beta_rig||Etot nucleon injection spectrum type
+electron_g_0         = 2.50     electron injection index below electron_rigid_br0
+electron_rigid_br0   = 4.0e3     reference rigidity0 for electron injection index in MV
+electron_g_1         = 2.50     electron injection index between electron_rigid_br0 and electron_rigid_br
+electron_rigid_br    = 1.0e9     reference rigidity for electron injection index in MV
+electron_g_2         = 2.45     electron injection index above reference rigidity
+He_H_ratio           = 0.11     He/H of ISM, by number
+n_X_CO               = 9     an option to select functional dependence of X_CO=X_CO(r)
+n_X_CO_values        = 0     only for n_X_CO=3, number of values in X_CO_values
+X_CO_values          = 0     only for n_X_CO=3
+X_CO_radius          = 0     only for n_X_CO=3
+propagation_X_CO     = 0     not used
+X_CO                 = 1.9E20     CO to H2 conversion factors, used both in propagation and skymap genergation
+X_CO_parameters_0    = 1.0E20     Parameter X0 for n_X_CO = 2
+X_CO_parameters_1    = 1     Parameter A for n_X_CO = 2
+X_CO_parameters_2    = 0     Parameter B for n_X_CO = 2
+X_CO_parameters_3    = 0     Parameter C for n_X_CO = 2
+nHI_model            = 1     an option to select analytical HI model
+nH2_model            = 1     an option to select analytical CO model
+nHII_model           = 1     an option to select analytical HII model
+COR_filename         = rbands_co10mm_v2_2001_qdeg.fits     
+HIR_filename         = rbands_hi12_v2_qdeg_zmax1_Ts125.fits     H I maps
+GCR_data_filename    = GCR_data_1.dat     
+fragmentation        = 1     1=include fragmentation
+momentum_losses      = 1     1=include momentum losses
+radioactive_decay    = 1     1=include radioactive decay
+K_capture            = 1     1=include K-capture
+ionization_rate      = 0     1=compute ionization rate
+start_timestep       = 1.0e3     (years)
+end_timestep         = 1.0e2     (years)
+timestep_factor      = 0.15     
+timestep_repeat      = 10     number of repeats per timestep in timestep_mode=1
+timestep_repeat2     = 0     number of repeats per timestep in timestep_mode=2
+timestep_print       = 10000     number of timesteps between printings
+timestep_diagnostics = 10000     number of timesteps between diagnostics
+control_diagnostics  = 0     control details of diagnostics
+network_iterations   = 1     number of iterations of entire network
+network_iter_compl   = 1     number of iterations of entire network
+network_iter_sec     = 1     number of iterations for secondary particles with A&lt;=1
+prop_r               = 0     1=propagate in r (2D)
+prop_x               = 1     1=propagate in x (3D)
+prop_y               = 1     1=propagate in y (3D)
+prop_z               = 1     1=propagate in z (2D, 3D)
+prop_p               = 1     1=propagate in p (2D, 3D)
+use_symmetry         = 0     0=no symmetry, 1=optimized symmetry, 2=xyz symmetry by copying (3D)
+vectorized           = 0     0=unvectorized code, 1=vectorized code
+source_specification = 0     2D::1:r,z=0 2:z=0  3D::1:x,y,z=0 2:z=0 3:x=0 4:y=0
+source_model         = 1     0=zero 1=parameterized 2=case-B 3=pulsars 5=S-Mattox 6=S-Mattox with cutoff 7=Gaussian 8=Table 9=HI+H2 10=H2 11=HII
+source_parameters_0  = 0     not used
+source_parameters_1  = 0.5     model 1:alpha
+source_parameters_2  = 1.0     model 1:beta
+source_parameters_3  = 20.0     model 1:rmax
+source_parameters_4  = 20.0     model 1:rmax
+source_parameters_5  = 0.0     model 1:rmax
+source_parameters_6  = 0     not used
+source_parameters_7  = 0     not used
+source_parameters_8  = 0     not used
+source_parameters_9  = 0     not used
+source_model_elec    = 1     source model for electrons, definitions as for nuclei
+source_pars_elec_0   = 0     not used
+source_pars_elec_1   = 0.5     model 1:alpha
+source_pars_elec_2   = 1.0     model 1:beta
+source_pars_elec_3   = 20.0     model 1:rmax
+source_pars_elec_4   = 20.0     model 1:rmax
+source_pars_elec_5   = 0.0     model 1:rmax
+source_pars_elec_6   = 0     not used
+source_pars_elec_7   = 0     not used
+source_pars_elec_8   = 0     not used
+source_pars_elec_9   = 0     not used
+n_source_values      = 0     only used with source_model/source_model_elec=8
+source_values        = 0     list of source ring values for source_model=8
+source_radius        = 0     list of source ring values for source_model=8
+n_cr_sources         = 0     number of pointlike cosmic-ray sources  3D only!
+cr_source_x_01       = 10.0     x position of cosmic-ray source 1 (kpc)
+cr_source_y_01       = 10.0     y position of cosmic-ray source 1 (kpc)
+cr_source_z_01       = 0.1     z position of cosmic-ray source 1 (kpc)
+cr_source_w_01       = 0.1     sigma width of cosmic-ray source 1
+cr_source_L_01       = 1.0     luminosity of cosmic-ray source 1
+cr_source_x_02       = 3.0     x position of cosmic-ray source 2 (kpc)
+cr_source_y_02       = 4.0     y position of cosmic-ray source 2 (kpc)
+cr_source_z_02       = 0.2     z position of cosmic-ray source 2 (kpc)
+cr_source_w_02       = 2.4     sigma width of cosmic-ray source 2
+cr_source_L_02       = 2.0     luminosity of cosmic-ray source 2
+cr_source_x_03       = 0.0     x position of cosmic-ray source 3 (kpc)
+cr_source_y_03       = 0.0     y position of cosmic-ray source 3 (kpc)
+cr_source_z_03       = 0.0     z position of cosmic-ray source 3 (kpc)
+cr_source_w_03       = 0.0     sigma width of cosmic-ray source 3
+cr_source_L_03       = 0.0     luminosity of cosmic-ray source 3
+cr_source_x_04       = 0.0     x position of cosmic-ray source 4 (kpc)
+cr_source_y_04       = 0.0     y position of cosmic-ray source 4 (kpc)
+cr_source_z_04       = 0.0     z position of cosmic-ray source 4 (kpc)
+cr_source_w_04       = 0.0     sigma width of cosmic-ray source 4
+cr_source_L_04       = 0.0     luminosity of cosmic-ray source 4
+cr_source_x_05       = 0.0     x position of cosmic-ray source 5 (kpc)
+cr_source_y_05       = 0.0     y position of cosmic-ray source 5 (kpc)
+cr_source_z_05       = 0.0     z position of cosmic-ray source 5 (kpc)
+cr_source_w_05       = 0.0     sigma width of cosmic-ray source 5
+cr_source_L_05       = 0.0     luminosity of cosmic-ray source 5
+SNR_events           = 0     handle stochastic SNR events
+SNR_interval         = 1.0e4     time interval in years between SNR in 1 kpc^-3 volume
+SNR_livetime         = 1.0e4     CR-producing live-time in years of an SNR
+SNR_electron_sdg     = 0.0     delta electron source index for Gaussian sigma
+SNR_nuc_sdg          = 0.0     delta nucleus source index for Gaussian sigma
+SNR_electron_dgpivot = 5.0e3     delta electron source index pivot rigidity (MV)
+SNR_nuc_dgpivot      = 5.0e3     delta nuclei source index pivot rigidity (MV)
+ISRF_file            = ISRF/Standard/Standard.dat     input ISRF file
+ISRF_filetype        = 3     
+ISRF_healpixOrder    = 3     
+B_field_name         = galprop_original     the name of the B-field model
+n_B_field_parameters = 10     number of B-field parameters
+B_field_parameters   = 0,0,0,0,0,0,0,0,0,0     parameters of the model specified by B_field_name
+B_field_model        = 050100020     bbrrrzzz bbb=10*B(0) rrr=10*rscale zzz=10*zscale
+proton_norm_Ekin     = 1.00e+5     proton kinetic energy for normalization
+electron_norm_Ekin   = 34.5e3     electron kinetic energy for normalization
+proton_norm_flux     = 4.90e-9     flux of protons at normalization energy (cm^-2 sr^-1 s^-1 MeV^-1)
+electron_norm_flux   = .40e-9     flux of electrons at normalization energy (cm^-2 sr^-1 s^-1 MeV^-1)
+source_norm          = 1.0     absolute normalization for proton CR source function (only if electron_norm_flux=proton_norm_flux=0)
+electron_source_norm = 1.0     absolute normalization for electron CR source function (only if electron_norm_flux=proton_norm_flux=0)
+rigid_min            = 0.0     min rigidity for sources
+rigid_max            = 1.0E38     max rigidity for sources
+max_Z                = 0     the largest atomic number (Z) in the nuclear reaction network
+iso_abundance_01_001 = 1.06e+06     H
+iso_abundance_01_002 = 34.8     H
+iso_abundance_02_003 = 9.033     He
+iso_abundance_02_004 = 7.199e+04     He
+iso_abundance_03_006 = 0     Li
+iso_abundance_03_007 = 0     Li
+iso_abundance_04_007 = 0.0     Be
+iso_abundance_04_009 = 0     Be
+iso_abundance_04_010 = 0.0     Be
+iso_abundance_05_010 = 0     B
+iso_abundance_05_011 = 0     B
+iso_abundance_06_012 = 2819     C
+iso_abundance_06_013 = 5.268e-07     C
+iso_abundance_07_014 = 182.8     N
+iso_abundance_07_015 = 5.961e-05     N
+iso_abundance_08_016 = 3822     O
+iso_abundance_08_017 = 6.713e-07     O
+iso_abundance_08_018 = 1.286     O
+iso_abundance_09_019 = 2.664e-08     F
+iso_abundance_10_020 = 312.5     Ne
+iso_abundance_10_021 = 0.003556     Ne
+iso_abundance_10_022 = 100.1     Ne
+iso_abundance_11_023 = 22.84     Na
+iso_abundance_12_024 = 658.1     Mg
+iso_abundance_12_025 = 82.5     Mg
+iso_abundance_12_026 = 104.7     Mg
+iso_abundance_13_027 = 76.42     Al
+iso_abundance_14_028 = 725.7     Si
+iso_abundance_14_029 = 35.02     Si
+iso_abundance_14_030 = 24.68     Si
+iso_abundance_15_031 = 4.242     P
+iso_abundance_16_032 = 89.12     S
+iso_abundance_16_033 = 0.3056     S
+iso_abundance_16_034 = 3.417     S
+iso_abundance_16_036 = 0.0004281     S
+iso_abundance_17_035 = 0.7044     Cl
+iso_abundance_17_037 = 0.001167     Cl
+iso_abundance_18_036 = 9.829     Ar
+iso_abundance_18_038 = 0.6357     Ar
+iso_abundance_18_040 = 0.001744     Ar
+iso_abundance_19_039 = 1.389     K
+iso_abundance_19_040 = 3.022     K
+iso_abundance_19_041 = 0.0003339     K
+iso_abundance_20_040 = 51.13     Ca
+iso_abundance_20_041 = 1.974     Ca
+iso_abundance_20_042 = 1.134e-06     Ca
+iso_abundance_20_043 = 2.117e-06     Ca
+iso_abundance_20_044 = 9.928e-05     Ca
+iso_abundance_20_048 = 0.1099     Ca
+iso_abundance_21_045 = 1.635     Sc
+iso_abundance_22_046 = 5.558     Ti
+iso_abundance_22_047 = 8.947e-06     Ti
+iso_abundance_22_048 = 6.05e-07     Ti
+iso_abundance_22_049 = 5.854e-09     Ti
+iso_abundance_22_050 = 6.083e-07     Ti
+iso_abundance_23_050 = 1.818e-05     V
+iso_abundance_23_051 = 5.987e-09     V
+iso_abundance_24_050 = 2.873     Cr
+iso_abundance_24_051 = 0     Cr
+iso_abundance_24_052 = 8.065     Cr
+iso_abundance_24_053 = 0.003014     Cr
+iso_abundance_24_054 = 0.4173     Cr
+iso_abundance_25_053 = 6.499     Mn
+iso_abundance_25_055 = 1.273     Mn
+iso_abundance_26_054 = 49.08     Fe
+iso_abundance_26_055 = 0     Fe
+iso_abundance_26_056 = 697.7     Fe
+iso_abundance_26_057 = 21.67     Fe
+iso_abundance_26_058 = 3.335     Fe
+iso_abundance_27_059 = 2.214     Co
+iso_abundance_28_058 = 28.88     Ni
+iso_abundance_28_059 = 0     Ni
+iso_abundance_28_060 = 11.9     Ni
+iso_abundance_28_061 = 0.5992     Ni
+iso_abundance_28_062 = 1.426     Ni
+iso_abundance_28_064 = 0.3039     Ni
+use_Z_1              = 1     
+use_Z_2              = 1     
+use_Z_3              = 1     
+use_Z_4              = 1     
+use_Z_5              = 1     
+use_Z_6              = 1     
+use_Z_7              = 1     
+use_Z_8              = 1     
+use_Z_9              = 1     
+use_Z_10             = 1     
+use_Z_11             = 1     
+use_Z_12             = 1     
+use_Z_13             = 1     
+use_Z_14             = 1     
+use_Z_15             = 1     
+use_Z_16             = 1     
+use_Z_17             = 1     
+use_Z_18             = 1     
+use_Z_19             = 1     
+use_Z_20             = 1     
+use_Z_21             = 1     
+use_Z_22             = 1     
+use_Z_23             = 1     
+use_Z_24             = 1     
+use_Z_25             = 1     
+use_Z_26             = 1     
+use_Z_27             = 1     
+use_Z_28             = 1     
+use_Z_29             = 0     
+use_Z_30             = 0     
+total_cross_section  = 2     =0 -Letaw83; =1 - WA96 Z.gt.5 and BP01 Z.lt.6; =2 -BP01 (2-best)
+cross_section_option = 012     100*i+j i=1: use Heinbach-Simon C,O->B j=kopt j=11=Webber, 21=ST
+t_half_limit         = 1.0e4     year - lower limit on radioactive half-life for explicit inclusion
+primary_electrons    = 0     
+secondary_electrons  = 0     
+knock_on_electrons   = 0     1,2 1=compute knock-on electrons (p,He) 2= use factor 1.75 to scale pp,pHe
+secondary_positrons  = 0     
+secondary_protons    = 0     
+secondary_antiproton = 0     1=uses nuclear scaling; 2=uses nuclear factors by Simon et al. (1998)
+tertiary_antiproton  = 0     
+skymap_format        = 0     fitsfile format: 0=old format (the default), 1=mapcube for glast science tools, 2=both, 3=healpix
+output_gcr_full      = 0     output full galactic cosmic ray array
+warm_start           = 0     read in nucle file and continue run
+verbose              = 0     verbosity: -1=min,10=max
+test_suite           = 0     test suite instead of normal run
+primary_DM_positron  = 0   1=compute DM positrons
+primary_DM_electron  = 0   1=compute DM electrons
+primary_DM_antip     = 0   1=compute DM antiprotons
+DM_mass              = 8.e5     dark matter mass [MeV]
+DM_boostfactor       = 0.7      boost factor of dark matter contribution
+DM_sigmav            = 3.e-26   sigma*v of dark matter contribution
+DM_model             = 1        DM annihilation model, 1=mono; 2=flat; 3=double-peak
+primary_TD_positron  = 0   1=compute time_dependent positrons
+primary_TD_electron  = 1   1=compute time_dependent electrons
+source_age           = 1.1e4          age of CR source [yr] (Vela:1.1e4 Monogem:8.6e4 Geminga:3.4e5 etc)
+TD_SNR_model         = 1              0=none; 1=burst-like; 2=TD pulsar dacay; 3=exp decay
+total_energy         = 1.0e51  erg
+power_law_1          = 2.20   
+power_law_2          = 2.20
+power_law_br         = 4.e3    MeV
+energy_cutoff        = 2.0e8    MeV
+SNR_x                = 0.0     kpc    **not used** single source coordinate
+SNR_y                = 0.0     kpc    **not used** single source coordinate
+SNR_z                = 0.0     kpc    **not used** single source coordinate 
+longitude            = 263.9   rad
+latitude             = -3.3    rad
+distance             = 0.2    kpc
+random_coordinate    = 0              1=calculate random coordinate parameters
+rand_min             = 0.25    kpc
+rand_max             = 0.30    kpc	   
+random_age           = 0              1=calculate random age parameters
+rant_min             = 9.e3    yr
+rant_max             = 2.7e4   yr	   
+rm_nearbysource      = 0              1=exclude nearby CR sources (3D mode ONLY)
+near_distance        = 1.0            exclude CR sources in a distance below near_distance from the earth [kpc]
+near_age             = 1.e5           exclude young CR sources [yr] 
+diff_TeV             = 0              use other diffusion coefficient in TeV region
+D0_xx_TeV            = 2.0e29         diffusion coefficient at TeV region
+D_rigid_br_TeV       = 5.0e4          reference rigidity for diffusion coefficient, TV
+D_g_TeV              = 0.3            diffusion coefficient index above reference rigidity, TV
+check_num            = 1117
+t_TDmax              = 20000   yr
+t_TDmin              = 10000   yr
