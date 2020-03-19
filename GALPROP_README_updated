@@ -1,0 +1,224 @@
+GALPROP README
+---------------------------------------------------------------------
+# Updated by Saptashwa 20170609
+#++++++++++++++++++++++++++++++++++++++++++
+#+ This part was written by GALPROP team
+#++++++++++++++++++++++++++++++++++++++++++
+
+
+1.  GALPROP is a code for cosmic ray propagation and diffuse gamma ray production. 
+
+2. Installation 
+
+The package galtoolslib is required.  You should have received it along with GALPROP. # not needed for version 54
+
+The installation is made possible with cmake. We recommend
+building outside the source directory.
+
+Assuming you are in the GALPROP directory where this README is located
+the typical installation using cmake goes like this:
+
+#> mkdir build
+
+#> cd build
+
+#> cmake .. -DCMAKE_INSTALL_PREFIX=<path to install> -Dgaltoolslib_DIR=<galtoolslib install path>/lib/CMake -DCMAKE_C_COMPILER=<galtoolslib c compiler> -DCMAKE_CXX_COMPILER=<galtoolslib c++ compiler> -DGALDEF_PATH=<galdef file path> -DFITS_DATA=<FITS data path>
+
+#> make
+
+#> make install
+
+Note that the compiler and the compiler flags are by default the same as 
+the ones used in galtoolslib.
+
+Note that it is not necessary to specify the GALDEF or FITS data paths because these
+can also be specified via the command line at run time.
+
+The code is tested on a variety of compilers and linux distributions. In 
+addition, the code autodetects and compiles on the Apple/Mac version of the 
+BSD. The code will probably autodetect and compile under other 
+Unix-like variants this is untested. We don't support, nor care, about a 
+windows-based environment -- requests for such support will be ignored!
+
+3. To run galprop
+
+create  directory <path for GALDEF files>  and edit your galdef_56_xxxxxxx (start from examples in ./GALDEF)
+create  directory <path for FITS   files> then copy the required input files there from  ./FITS (see galdef for names of required files)
+create  directory <path for output FITS files> if different path required from <path for FITS files>. Now controlled on command line.
+
+Note: The paths to the GALDEF files or the data FITS files can be specified 
+on the command line to override the defaults specified during cmake configuration.
+
+To run galprop with configuration from galdef_56_xxxxxxx
+
+#> <directory for installed software>/bin/galprop -r xxxxxxx -o <path for output FITS files> -g <path for GALDEF files> -f <path for FITS input files>
+
+the output goes to <path for output FITS files>.
+
+
+there are additional command line options. Here are all of them:
+-r run ID                             mandatory
+-o <path for output FITS files)       overrides ./configure value
+-g <path for GALDEF files>            overrides ./configure value
+-f <path for input FITS files>        overrides ./configure value
+-p <prefix>                           optional prefix for the output files
+-h                                    shows galprop usage help
+
+If using OpenMP the number of threads can be controlled with the environment variable OMP_NUM_THREADS
+
+
+Note: the code is built by default with optimisation options -O3, parallelisation,
+and vector instructions (on x86 machines -- other architectures have similar
+options but have not been tuned due to no access to machines). OpenMP is enabled
+by default to take advantage of multi-core machines. We are working
+to provide more tuning dependent on processor sub-type and compiler. We test
+on the latest gcc and intel compilers present on our systems (Gnu/Linux, BSD,
+and OSX). Where possible native versions of the code are built as well as a default
+so that the same binaries are runnable on different CPUs (e.g., various x86_64 units).
+
+
+#++++++++++++++++++++++++++++++++++++++++++
+#+ Edited SB20180424
+#++++++++++++++++++++++++++++++++++++++++++
+
+
+#below describes the detailed installation procedure for both ver 54 and 56
+
+ 
+
+Please check the version number of gcc and gxx they have to be at least 4.9 or more
+
+1. extract files 
+2. create the binary folder to install several components
+3. cfitsio installation... 
+	a. inside cfitsio extracted folder  ./configure FC='gcc -m64' --prefix='target dir(ex. /home/suvob/Downloads/tarfiles/binary/binarycfitsio)'
+	b.  make 
+	c.  install (make install)
+
+4. CCFits installation... 
+	a. inside CCfits extracted folder  ./configure --with-cfitsio='dir. where cfitsio in installed (ex. /home/suvob/Downloads/tarfiles/binary/binarycfitsio)' --prefix='target dir. (ex. /home/suvob/Downloads/tarfiles/binary/binaryCCfits )'
+	b. make 
+	c. make install 
+
+5. gsl installation... 
+	a. inside gsl extracted folder  ./configure --prefix='target dir. '
+	b. make 
+	c. make install
+
+6. CLHEP installation...
+	a. create a build dir. (ex. buildCLHEP)
+	b. create the binary dir. as usual for other files
+	c. inside the build dir.  cmake -DCMAKE_INSTALL_PREFIX='binary dir' 'source dir' (ex. /home/suvob/Downloads/tarfiles/binary/binaryclhep  /home/suvob/Downloads/tarfiles/2.1.3.1/CLHEP) (sometimes it requires sudo in all of them sudo cmake -DCMAKE_INSTALL_PREFIX=/home/suvo/galprop-56/binary/binaryclhep /home/suvo/galprop-56/tarfiles/2.1.3.1/CLHEP)
+	d. make (sudo) (inside buildclhep directory)
+ 	e. make install (sudo) (inside buildclhep directory)
+
+
+
+
+
+
+7.a.  HEALPIX version 2.20a...
+	Most complicated installation.... First of all installation is not necessary.... Only configure the c++ folder ... check the README file inside Healpix directory....
+	a. ./configure 
+	b. select the number to modify c++ section (ex. 4)
+	c. give path to your libcfitsio and include dir. 
+	d. proceed to make
+	e. make will fail with doxygen error. NO worries... but if it fails with  "fill(inival)" error then find the arr.h file in cxxsupport directory. go to line 207 and modify "fill(inival)" to "this->fill(inival)", this will solve the issue... Check with make again to make sure that this problem is gone, otherwise GALPROP make will fail... 
+        f. It's usually suggested to make this change in the cxxsupport directory before proceeding to make. An error with dvips not properly installed can also be removed by this simple chenge on arr.h file. Even if the make fails it's suggested to run make test to better identify where the problem is.. ideal situation is failure with  ./runtest.sh: xv: not found. No worries it's all good :)
+Healpix-2.20.a seems to work perfectly with this version of galprop(54.1.984). Complicated installation but remember that more than a successful installation all you need is a generic_gcc with bin, include and lib directory with certain set of files that are needed to install Galprop properly... : ).. stay calm and relax :)... life is good :)
+
+
+
+
+7.b. Healpix Version 3.31 ...(Works fantastic with v-56, but not with v-54) 
+	Here I have used Healpix version 3.31 which is smooth like butter cream. ./configure and then make succeds then verify with make test (seems like sudo is necessary but I will change the ownership). 
+	No need to modify any files or anything 
+
+
+
+
+
+8. Wcs installation ...# added for v-56
+	a. extract the tar file
+	b. create a binary directory
+	c. inside the extracted folder :  sudo ./configure --prefix=/home/suvo/galprop-56/binary/binarywcs
+	d. make 
+	e. make install
+
+
+
+
+9. xerces installation ...# added for v-56
+	a. extract the tar file
+	b. create the binary directory and a build directory
+	c. inside the build directory : sudo cmake -DCMAKE_INSTALL_PREFIX=/home/suvo/galprop-56.1/binary/binaryxerces -DCMAKE_BUILD_TYPE=Debug -DMessage-loader=icu /home/suvo/galprop-56.1/tarfiles/xerces-c-3.2.1
+	d. sudo make -j8 
+	e. sudo make test : pass with 80/80 ; full marks :)   
+	f. sudo make install	(d, e, f all should be executed inside the build directory)
+
+
+10. galtoolslib installation ...# added for v-56
+	a. extract tar file Galtools
+	b. binary and build directory should be made
+	c. inside build directory: cmake -DCMAKE_INSTALL_PREFIX=/home/suvo/galprop-56.1/binary/galtoolslib /home/suvo/galprop-56.1/galtoolslib-1.0.855-Source
+	d. CMAKE may end up with error. Go to build directory and inside the CMakeCache.txt file give proper paths to dependencies
+		d.1. Make sure gsl is used from binarygsl folder. for the gsl config path, give the complete path to gsl-cofig file in (//Path to a program.
+		     GSL_CONFIG:FILEPATH)
+	e. make 
+	f. make ends with error. Somehow the files inside xerces include library, does not have the correct path, but I wrote some codes which will automatically set up the path inside all files. Otherwise you can do it manually which is boring and super time consiuming.  
+	g. Last dependency should be xerces and then once the library path and installation directory are properly given, cmake and finally make ends with success
+	h. if you find error for no rule to make target then check CMakeCache.txt file for whether the paths for the installation or the library directory are correct. 
+	i. May create problem with gsl library linking and it could be resolved by changing the header files location inside the all the files within include directory.
+	j. after make install you can find the include lib share directories inside the binary folder.  
+
+
+
+
+
+
+11. GALPROP installation  (version - 56)
+	a. make a build directory
+	b. inside build directory
+	c. sudo cmake -DCMAKE_INSTALL_PREFIX=/home/suvo/galprop-56/binary/galprop /home/suvo/galprop-56/tarfiles/GALPROP-56.0.2870-Source -Dgaltoolslib_DIR=/home/suvo/galprop-56/binary/galtoolslib/lib/CMake -DCMAKE_C_COMPILER=/usr/bin/gcc-7 -DCMAKE_CXX_COMPILER=/usr/bin/g++-7 -DGALDEF_PATH=/home/suvo/galprop-56/binary/galprop/GALDEF -DFITS_DATA=/home/suvo/galprop-56/fits
+
+	d. before giving the path for gxx and gcc please check where they are installed (which g++/ which gcc). It's very necessary to have a version higher than 4.9 and specify the path of that version
+	e. if everything so far you have done well then this will work and you can proceed to make and then make install
+	f. should be a success.... :-)
+
+
+
+
+
+
+
+11 (2). GALPROP installation (old v-54 installation)
+	a. extract the source code... this folder contains configure.ac, source dir. and the README file which hopefully You're reading now... :>)  
+	b. create GALDEF dir. inside GALPROP where You will put the galdef files for simulation
+	c. copy the FITS file and ISRF data to create FITS directory inside GALPROP
+	d. make one more folder out_FITS
+	e. let's start with autoconfigure ....   inside the galprop dir, autoreconf -i -v -f 
+	f. autoreconf should work properly or else add AM_PROG_AR in configure.ac 
+	g. proceed to configure ....  
+		
+
+
+./configure --with-cfitsio=/home/suvo/Downloads/tarfiles/binary/binarycfitsio --with-ccfits=/home/suvo/Downloads/tarfiles/binary/binaryCCfits --with-healpix=/home/suvo/Downloads/tarfiles/Healpix_2.20a/src/cxx/generic_gcc --with-gsl=/home/suvo/Downloads/tarfiles/binary/binarygsl --with-clhep=/home/suvo/Downloads/tarfiles/binary/binaryclhep --prefix=/home/suvo/Downloads/tarfiles/galprop-54.1.984_nbysource/source --with-galdef=/home/suvo/Downloads/tarfiles/galprop-54.1.984_nbysource/GALDEF --with-fitsdata=/home/suvo/Downloads/tarfiles/galprop-54.1.984_nbysource/FITS --datadir=/home/suvo/Downloads/tarfiles/galprop-54.1.984_nbysource/out_FITS --enable-openmp F77=gfortran
+
+
+ 
+
+
+
+
+# if gsl configuration is not done properly, may create problem in shared libraries while running galprop 
+export LD_LIBRARY_PATH=LD_LIBRARY_PATH:/home/suvo/Downloads/Quasar/galprop-56/binary/binarygsl/lib
+
+# please be aware of c++, gcc and gfortran version. I have checked that it works till version 7 for each. If higher version is installed in the system then use the lower version using update-alternatives
+
+
+
+
+
+
+
+
